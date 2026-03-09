@@ -1,8 +1,9 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters, CallbackQueryHandler
 import datetime
+import os
 
-TOKEN = "8355137759:AAFIR-m5cToGXi5d8OWZskB42A6NsE-cxXA"
+TOKEN = os.environ['TOKEN']
 
 # База товаров
 products = {
@@ -126,4 +127,5 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 app.add_handler(CallbackQueryHandler(button))
 
 print("Бот запущен...")
+
 app.run_polling()
